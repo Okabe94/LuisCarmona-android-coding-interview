@@ -7,7 +7,7 @@ import com.beon.androidchallenge.domain.model.Fact
 
 class MainViewModel : ViewModel() {
 
-    val currentFact = MutableLiveData<Fact?>(null)
+    val currentFact = MutableLiveData<UiState?>(null)
 
     fun searchNumberFact(number: String) {
         if (number.isEmpty()) {
@@ -15,15 +15,20 @@ class MainViewModel : ViewModel() {
             return
         }
 
-        FactRepository.getInstance().getFactForNumber(number, object : FactRepository.FactRepositoryCallback<Fact> {
-            override fun onResponse(response: Fact) {
-                currentFact.postValue(response)
-            }
+        FactRepository.getInstance()
+            .getFactForNumber(number, object : FactRepository.FactRepositoryCallback<Fact> {
+                override fun onResponse(response: Fact) {
+                    currentFact.postValue(UiState(response, false))
+                }
 
-            override fun onError() {
-                
-            }
-
-        })
+                override fun onError() {
+                    currentFact.postValue(UiState(null, true))
+                }
+            } )
     }
+
+    data class UiState(
+        val fact: Fact?,
+        val isError: Boolean
+    )
 }

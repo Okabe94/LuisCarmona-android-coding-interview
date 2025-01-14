@@ -15,9 +15,37 @@
         android:imeOptions="actionSearch"
         android:inputType="number"
         android:maxLines="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnClear"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="@id/numberEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/numberEditText" />
+
+    <TextView
+        android:id="@+id/tvErrorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/generic_error"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/numberEditText"
+        tools:text="ERROR" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvErrorText"
+        tools:listitem="@layout/search_history_item_view" />
 
     <TextView
         android:id="@+id/factTextView"
@@ -30,14 +58,14 @@
         app:layout_constraintBottom_toTopOf="@id/retryButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/numberEditText" />
+        app:layout_constraintTop_toBottomOf="@id/rvSearchHistory" />
 
     <Button
         android:id="@+id/retryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/refresh"
+        android:text="@string/search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

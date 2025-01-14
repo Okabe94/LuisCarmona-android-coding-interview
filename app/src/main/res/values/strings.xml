@@ -2,4 +2,7 @@
     <string name="app_name">Android Challenge</string>
     <string name="refresh">Retry</string>
     <string name="instructions">Type in a number to get a random fact about it!</string>
+    <string name="generic_error">Could not complete the request, try again later</string>
+    <string name="search">search</string>
+    <string name="clear">clear</string>
 </resources>
