@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android Challenge</string>
+    <string name="refresh">Retry</string>
+    <string name="instructions">Type in a number to get a random fact about it!</string>
+</resources>
